@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-export default class Counter extends Component {
+class Counter extends Component {
   state = {
-    count: 0,
+    count: this.props.counter.value,
     tags: ["tag1", "tag2", "tag3"],
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.handleIncrement = this.handleIncrement.bind(this);
   }
 
@@ -25,7 +25,13 @@ export default class Counter extends Component {
         >
           Increment
         </button>
-        {this.renderTags()}
+        <button
+          onClick={() => this.props.onDelete(this.props.counter.id)}
+          className="btn btn-danger btn-sm m-2"
+        >
+          Delete
+        </button>
+        {/* {this.renderTags()} */}
       </div>
     );
   }
@@ -54,3 +60,5 @@ export default class Counter extends Component {
     return count === 0 ? "Zero" : count;
   }
 }
+
+export default Counter;
