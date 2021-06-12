@@ -5,6 +5,18 @@ class Counter extends Component {
     tags: ["tag1", "tag2", "tag3"],
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Update phase:componentDidUpdate:prevProps", prevProps);
+    console.log("Update phase:componentDidUpdate:prevState", prevState);
+    // if (prevProps.counter.value !== this.props.counter.value) {
+    // do sth
+    // }
+  }
+
+  componentWillUnmount() {
+    console.log("Unmount phase:componentWillUnmount");
+  }
+
   render() {
     return (
       <div>
